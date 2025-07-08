@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html, body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* Header kısmı */
+header {
+  display: flex;
+  justify-content: space-between; /* Başlık ve menü arası boşluk */
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #eff2f5;
+  width: 100%;
+  box-sizing: border-box;
+  margin:0;
+}
+
+header h1 {
+  margin: 0;
+  padding: 0;
+}
+
+
+nav {
+    text-align: right; /* Menü sağa hizalansın */
+    margin-top: 2px;
+}
+
+
+/* Navigation menüsü */
+nav ul {
+  list-style: none;
+  display: flex;       /* Menü öğeleri yatay */
+  margin: 0;
+  padding: 0;
+  gap: 40px;           /* Menü öğeleri arası boşluk */
+}
+
+
+nav ul li {
+    display: inline;
+    margin-right: 40px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+section {
+    background-color: #e5ebf8;
+    box-shadow: 0 2px 2px rgba(153, 67, 116, 0.063);
+    height: 100%;
+    width: 100%;
+    position: relative; /* Veya hiç yazma (default: static) */
+    bottom: 0;
+    left: 0;
+    top: 0;
+    overflow-y: auto; /* çok uzun metin olursa kaydırma çıksın */
+    text-align: left; /* yazılar sola hizalı */
+    display: block; /* default zaten, belirtmek için */
+    height: auto;        /* İçeriğe göre uzasın */
+    overflow: visible;   /* Taşan içerik görünsün */
+    margin:0;
+}
+
+.home-section {
+  min-height: calc(100vh - 80px); /* Ekran yüksekliğinden header çıkar */
+  background-color: #e5ebf8;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* yukarı hizala */
+  align-items: flex-start;      /* sola hizala */
+
+}
+
+.projects {
+  padding: 40px;
+  background-color: #f9fbff;
+  color: #333;
+}
+
+.projects h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  display: block;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-decoration: none;
+  color: inherit; /* Link rengi varsayılan metin rengi olsun */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+  margin-top: 0;
+  color: #4a6fa5;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #3366cc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.project-card a:hover {
+  text-decoration: underline;
+}
+
+.experience {
+  padding: 40px;
+  background-color: #f3f7fc;
+  color: #333;
+  padding-bottom: 100px;
+}
+
+.experience h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #4a6fa5;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  padding: 0 15px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+
+.experience-card {
+  background-color: #ffffff;
+  border-left: 5px solid #4a6fa5;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  padding: 15px;
+  font-size: 0.9rem;
+  min-height: 100px; /* Yüksekliği kontrol altında tutar */
+  transition: transform 0.2s ease-in-out;
+  margin-right: 10px;
+  max-width: 100%; /* Kutular kapsayıcının dışına taşmasın */
+  overflow-wrap: break-word;
+
+}
+
+
+.experience-card:hover {
+  transform: translateY(-5px);
+}
+
+.experience-card h3 {
+  margin-top: 0;
+  color: #2e5c9e;
+}
+
+.experience-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
