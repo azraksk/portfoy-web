@@ -2,47 +2,51 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projeler</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projelerim</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Projeler</h1>
+    <h1>Projelerim</h1>
     <nav>
       <ul>
         <li><a href="index.html">Anasayfa</a></li>
-        <li><a href="projeler.html">Projeler</a></li>
+        <li><a href="projeler.html" class="active">Projeler</a></li>
         <li><a href="deneyim.html">Deneyim</a></li>
       </ul>
     </nav>
   </header>
 
-<section class="projects">
-  <h2>Yaptığım Projeler</h2>
-  <div class="project-list">
-    
-    <a href="https://ornek-link1.com" target="_blank" class="project-card">
-      <h3>To-do List Uygulaması</h3>
-      <p>Basit görev takip uygulaması</p>
-    </a>
+  <main class="projects-section">
 
-    <a href="https://ornek-link2.com" target="_blank" class="project-card">
-      <h3>Kişisel Blog Sayfası</h3>
-      <p>HTML ve CSS ile hazırladığım kişisel blog</p>
-    </a>
+    <div class="project-list">
+      <article class="project-card">
+        <img src="project1-thumbnail.jpg" alt="Hava Durumu Uygulaması" />
+        <h2>Hava Durumu Uygulaması</h2>
+        <p>Gerçek zamanlı hava durumu bilgisi sunan mobil uygulama.</p>
+        <div class="tags">
+          <span>React Native</span>
+          <span>API</span>
+          <span>JavaScript</span>
+        </div>
+        <a href="project1.html" class="btn">Projeyi Görüntüle</a>
+      </article>
 
-    <a href="https://ornek-link3.com" target="_blank" class="project-card">
-      <h3>Hava Durumu Uygulaması</h3>
-      <p>API kullanarak hava durumu gösterimi</p>
-    </a>
+      <article class="project-card">
+        <img src="project2-thumbnail.jpg" alt="Yüz Tanıma Sistemi" />
+        <h2>Yüz Tanıma Sistemi</h2>
+        <p>Makine öğrenmesi kullanarak yüz tanıma algoritması geliştirme.</p>
+        <div class="tags">
+          <span>Python</span>
+          <span>OpenCV</span>
+          <span>Machine Learning</span>
+        </div>
+        <a href="project2.html" class="btn">Projeyi Görüntüle</a>
+      </article>
 
-  </div>
-</section>
-
-
-
-
-
+      <!-- Daha fazla proje kartı ekleyebilirsin -->
+    </div>
+  </main>
 </body>
 </html>
