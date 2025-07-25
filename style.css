@@ -161,7 +161,7 @@ section {
 
 .project-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* 2 sütunlu grid */
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto auto;  /* 2 satır */
   gap: 30px;
   grid-template-areas:
@@ -179,6 +179,10 @@ section {
 
 .project-list article:nth-child(3) {
   grid-area: proj3;
+}
+
+.project-list article:nth-child(4) {
+  grid-area: proj4;
 }
 
 .project-card {
@@ -777,87 +781,4 @@ button {
 
 .back-button:hover {
   background-color: #800000;
-}
-
-.mobile-app-container {
-  max-width: 800px;
-  margin: 40px auto;
-  background: #fff5ee; /* Açık bej kutu */
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(179, 50, 50, 0.1);
-  color: #5c0b06;
-  font-family: Arial, sans-serif;
-}
-
-.mobile-app-container h1 {
-  color: #b30000; /* Koyu kırmızı başlık */
-}
-
-.mobile-app-container h2 {
-  color: #800000; /* Daha koyu kırmızı */
-  margin-top: 30px;
-}
-
-.mobile-app-screenshot {
-  width: 100%;
-  margin: 20px 0;
-  border-radius: 8px;
-  border: 2px solid #b30000;
-}
-
-.mobile-app-container ul {
-  padding-left: 20px;
-}
-
-.mobile-app-container a {
-  color: #a00000;
-  text-decoration: none;
-}
-
-.mobile-app-container a:hover {
-  text-decoration: underline;
-}
-
-
-/* --- Teknofest 5G Projesi --- */
-
-.teknofest-container {
-  max-width: 800px;
-  margin: 40px auto;
-  background: #fff5ee;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(179, 50, 50, 0.1);
-  color: #5c0b06;
-  font-family: Arial, sans-serif;
-}
-
-.teknofest-container h1 {
-  color: #b30000;
-}
-
-.teknofest-container h2 {
-  color: #800000;
-  margin-top: 30px;
-}
-
-.teknofest-screenshot {
-  width: 100%;
-  margin: 20px 0;
-  border-radius: 8px;
-  border: 2px solid #b30000;
-}
-
-.teknofest-container ul {
-  padding-left: 20px;
-}
-
-.teknofest-container a {
-  color: #a00000;
-  text-decoration: none;
-}
-
-.teknofest-container a:hover {
-  text-decoration: underline;
 }
