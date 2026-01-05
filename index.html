@@ -15,28 +15,30 @@
         <li><a href="index.html" class="active">Anasayfa</a></li>
         <li><a href="projeler.html">Projeler</a></li>
         <li><a href="deneyim.html">Deneyim</a></li>
+        <li><a href="sertifikalar.html">Sertifikalar</a></li>
+        <li><a href="takvim.html">Takvim</a></li>
       </ul>
     </nav>
     
   </header>
   
   <section class="home-section">
-  <div class="home-right">
-    <img src="profil.jpeg" alt="Yüsra Azra Demirel Profil Fotoğrafı" />
+  <div class="home-right fade-right">
+    <img src="/assets/assets/images/profil.jpeg" alt="Yüsra Azra Demirel Profil Fotoğrafı" />
 
     <div class="contact-card">
       <a href="https://www.linkedin.com/in/yüsra-azra-demirel-40949a231/" target="_blank">
-        <img src="linkedin-icon.jpeg" alt="LinkedIn" />
+        <img src="/assets/assets/images/linkedin-icon.jpeg" alt="LinkedIn" />
       </a>
       <a href="https://github.com/azraksk" target="_blank">
-        <img src="github-icon.jpeg" alt="GitHub" />
+        <img src="/assets/assets/images/github-icon.jpeg" alt="GitHub" />
       </a>
       <a href="Yüsra_Azra_Demirel.pdf" target="_blank">
-        <img src="indir.jpeg" alt="CV" />
+        <img src="/assets/assets/images/indir.jpeg" alt="CV" />
         </a>
     </div>
   </div>
-    <div class="home-left">
+    <div class="home-left fade-left">
       <h1>Merhaba! Ben Yüsra Azra Demirel</h1>
       <p>
         Fenerbahçe Üniversitesi Bilgisayar Mühendisliği 4. sınıf öğrencisiyim. Teknolojiye olan ilgimi yalnızca derslerle sınırlı tutmayıp; yazılım, donanım ve yapay zeka alanlarında projelerle pekiştirmeye çalışıyorum.
@@ -49,17 +51,17 @@
       </p>
     </div>
 
-    <section class="highlights">
+    <section class="highlights fade-up card-section">
       <h2>Öne Çıkanlar</h2>
       <ul>
-        <li>📱 Son proje: Web Sitesi</li>
+        <li>📱 Son proje: MyBlog Web Sitesi</li>
         <li>🎓 Erasmus sınavı birinciliği</li>
         <li>💻 TÜBİTAK: Yazılım Stajı</li>
       </ul>
       <a href="projeler.html" class="btn">Projelerimi Gör</a>
     </section>
 
-    <section class="skills">
+    <section class="skills fade-up card-section">
       <h2>Teknik Yetenekler</h2>
       <div class="skill-bar" style="--percent:80%"><span>Python</span></div>
       <div class="skill-bar" style="--percent:70%"><span>C</span></div>
@@ -70,9 +72,11 @@
       <div class="skill-bar" style="--percent:90%"><span>React Native</span></div>
       <div class="skill-bar" style="--percent:90%"><span>CSS</span></div>
       <div class="skill-bar" style="--percent:90%"><span>HTML</span></div>
+      <div class="skill-bar" style="--percent:80%"><span>PHP</span></div>
+      <div class="skill-bar" style="--percent:85%"><span>MySQL</span></div>
     </section>
 
-    <section class="contact-form-section">
+    <section class="contact-form-section fade-up card-section">
       <h2>Hızlı İletişim</h2>
       <form id="contactForm">
         <input type="hidden" name="_captcha" value="false">
@@ -137,5 +141,57 @@
     });
     
     </script>
+
+    <script>
+  /* ===== FORM SUBMIT ===== */
+  const form = document.getElementById("contactForm");
+  const overlay = document.getElementById("popupOverlay");
+
+  form?.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/yusraazrademirel@gmail.com", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        form.reset();
+        overlay.classList.add("active");
+      } else {
+        document.getElementById("formMessage").innerText =
+          "Bir hata oluştu, lütfen tekrar deneyin.";
+      }
+    })
+    .catch(() => {
+      document.getElementById("formMessage").innerText =
+        "Bir hata oluştu, lütfen tekrar deneyin.";
+    });
+  });
+
+  document.getElementById("closePopup")?.addEventListener("click", () => {
+    overlay.classList.remove("active");
+  });
+
+  /* ===== SCROLL & SKILL ANIMATIONS ===== */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show", "animate");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(
+    ".fade-up, .fade-left, .fade-right, .skill-bar"
+  ).forEach(el => observer.observe(el));
+</script>
+
+
     </body>
     </html>
+
+    

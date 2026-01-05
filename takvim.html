@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akademik Takvimim</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <header>
+    <h1>Takvim</h1>
+    <nav>
+      <ul>
+
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="projeler.html">Projeler</a></li>
+        <li><a href="deneyim.html">Deneyim</a></li>
+        <li><a href="sertifikalar.html">Sertifikalar</a></li>
+        <li><a href="takvim.html" class="active">Takvim</a></li>
+      </ul>
+    </nav>
+    
+  </header>
+
+
+
+  <div class="calendar-nav">
+    <button id="prevMonth">&lt;</button>
+    <h2 id="monthYear"></h2>
+    <button id="nextMonth">&gt;</button>
+  </div>
+
+  <div class="calendar">
+    <div class="calendar-header">
+      <div>Pzt</div>
+      <div>Sal</div>
+      <div>Çar</div>
+      <div>Per</div>
+      <div>Cum</div>
+      <div>Cmt</div>
+      <div>Paz</div>
+    </div>
+
+    <div class="calendar-body" id="calendarBody">
+      <!-- Günler JS ile buraya gelecek -->
+    </div>
+  </div>
+
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="closeModal">×</button>
+    <h2 id="modalDate"></h2>
+    <p id="modalContent">Bu güne ait etkinlik yok.</p>
+  </div>
+</div>
+
+<script src="assets/assets/js/calendar.js"></script>
+</body>
+</html>

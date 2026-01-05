@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Gün Detayı</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="day-header">
+  <a href="takvim.html" class="back-btn">← Takvime Dön</a>
+  <h1 id="dateTitle">Gün Detayı</h1>
+</header>
+
+<section class="summary">
+  <div>
+    <span class="label">Odak</span>
+    <span class="value" id="focus"></span>
+  </div>
+  <div>
+    <span class="label">Süre</span>
+    <span class="value" id="duration"></span>
+  </div>
+  <div>
+    <span class="label">Kategori</span>
+    <span class="value" id="category"></span>
+  </div>
+</section>
+
+<main class="day-detail">
+
+  <section>
+    <h2>📌 Yapılan Çalışma</h2>
+    <p id="work"></p>
+  </section>
+
+  <section>
+    <h2>🧠 Öğrenilenler</h2>
+    <ul id="learned"></ul>
+  </section>
+
+  <section>
+    <h2>🛠️ Yapılanlar</h2>
+    <ul id="did"></ul>
+  </section>
+
+  <section class="impact">
+    <h2>📈 Somut Kazanım</h2>
+    <p id="impact"></p>
+  </section>
+
+</main>
+
+<script src="assets/assets/js/day.js"></script>
+</body>
+</html>
