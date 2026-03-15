@@ -22,7 +22,7 @@
 
   <main class="projects-section">
 
-    <div class="project-list">
+    <div class="project-list" id="static-projects">
       <article class="project-card">
         <img src="assets/assets/images/websitesi-foto.jpeg" alt="Web sitesi" />
         <h2>Myblog Web Sitesi</h2>
@@ -89,6 +89,80 @@
       </article>
 
     </div>
+
+    <!-- Admin üzerinden eklenen projeler buraya gelecek -->
+    <div class="project-list" id="dynamic-projects"></div>
   </main>
+
+  <script>
+    (function () {
+      function loadProjects() {
+        try {
+          var raw = localStorage.getItem('projects');
+          var projects = raw ? JSON.parse(raw) : [];
+          return Array.isArray(projects) ? projects : [];
+        } catch (e) {
+          console.error('Projeler okunamadı', e);
+          return [];
+        }
+      }
+
+      function createProjectCard(project) {
+        var article = document.createElement('article');
+        article.className = 'project-card';
+
+        if (project.imageUrl) {
+          var img = document.createElement('img');
+          img.src = project.imageUrl;
+          img.alt = project.title || 'Proje görseli';
+          article.appendChild(img);
+        }
+
+        if (project.title) {
+          var h2 = document.createElement('h2');
+          h2.textContent = project.title;
+          article.appendChild(h2);
+        }
+
+        if (project.shortDesc) {
+          var p = document.createElement('p');
+          p.textContent = project.shortDesc;
+          article.appendChild(p);
+        }
+
+        if (project.techs && project.techs.length) {
+          var tagsDiv = document.createElement('div');
+          tagsDiv.className = 'tags';
+          project.techs.forEach(function (tech) {
+            var span = document.createElement('span');
+            span.textContent = tech;
+            tagsDiv.appendChild(span);
+          });
+          article.appendChild(tagsDiv);
+        }
+
+        if (project.links && project.links.length) {
+          var a = document.createElement('a');
+          a.className = 'btn';
+          a.href = project.links[0];
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = 'Projeyi Görüntüle';
+          article.appendChild(a);
+        }
+
+        return article;
+      }
+
+      var container = document.getElementById('dynamic-projects');
+      if (!container) return;
+      var projects = loadProjects();
+      if (!projects.length) return;
+
+      projects.forEach(function (p) {
+        container.appendChild(createProjectCard(p));
+      });
+    })();
+  </script>
 </body>
 </html>

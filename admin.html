@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projeler Admin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .admin-section {
+      max-width: 960px;
+      margin: 40px auto 80px;
+      padding: 32px 28px;
+      background: radial-gradient(circle at top left, #fff8f3 0, #f5f0e6 40%, #f0e2d3 100%);
+      border-radius: 20px;
+      box-shadow: 0 14px 40px rgba(92, 11, 6, 0.2);
+      color: #5c0b06;
+      position: relative;
+      overflow: hidden;
+    }
+    .admin-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+    }
+    .admin-section h2 {
+      margin-bottom: 20px;
+      border-bottom: 3px solid #b23a48;
+      padding-bottom: 8px;
+      font-size: 1.8rem;
+      letter-spacing: 0.04em;
+    }
+    .admin-section h3 {
+      margin-top: 32px;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #8c2f39;
+    }
+    .admin-section form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 28px;
+      margin-top: 10px;
+    }
+    .admin-section .full-width {
+      grid-column: 1 / -1;
+    }
+    .admin-section label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #4a231e;
+    }
+    .admin-section input,
+    .admin-section textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1.6px solid rgba(92, 11, 6, 0.55);
+      font-size: 0.96rem;
+      font-family: inherit;
+      resize: vertical;
+      background: rgba(255, 255, 255, 0.95);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+    }
+    .admin-section input:focus,
+    .admin-section textarea:focus {
+      outline: none;
+      border-color: #b23a48;
+      box-shadow: 0 0 0 3px rgba(178, 58, 72, 0.18);
+      background-color: #fffdf9;
+      transform: translateY(-1px);
+    }
+    .admin-section textarea {
+      min-height: 90px;
+    }
+    .admin-section button {
+      width: 100%;
+      padding: 13px 22px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #5c0b06, #8c2f39);
+      color: #fffefc;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.12s ease;
+    }
+    .admin-section button:hover {
+      background: linear-gradient(135deg, #7a1a12, #a63a4a);
+      box-shadow: 0 10px 25px rgba(92, 11, 6, 0.35);
+      transform: translateY(-2px);
+    }
+    .admin-section button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(92, 11, 6, 0.25);
+    }
+    .admin-message {
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #5c0b06;
+    }
+    .admin-list {
+      margin-top: 28px;
+      border-top: 1px dashed rgba(92, 11, 6, 0.25);
+      padding-top: 18px;
+    }
+    .admin-list-item {
+      padding: 10px 12px;
+      font-size: 0.94rem;
+      border-radius: 10px;
+      border: 1px solid rgba(92, 11, 6, 0.12);
+      background: rgba(255, 253, 249, 0.9);
+      margin-bottom: 8px;
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+    }
+    .admin-list-item span {
+      font-weight: 700;
+      color: #8c2f39;
+      min-width: 24px;
+    }
+    @media (max-width: 768px) {
+      .admin-section {
+        padding: 24px 18px;
+        margin: 24px 12px 60px;
+      }
+      .admin-section form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projeler Admin</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="projeler.html">Projeler</a></li>
+        <li><a href="deneyim.html">Deneyim</a></li>
+        <li><a href="sertifikalar.html">Sertifikalar</a></li>
+        <li><a href="takvim.html">Takvim</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-section">
+    <h2>Yeni Proje Ekle</h2>
+    <form id="projectForm">
+      <div class="full-width">
+        <label for="title">Başlık</label>
+        <input type="text" id="title" required />
+      </div>
+
+      <div class="full-width">
+        <label for="imageUrl">Görsel (URL)</label>
+        <input type="url" id="imageUrl" placeholder="assets/images/ornek.jpg veya https://..." required />
+      </div>
+
+      <div class="full-width">
+        <label for="shortDesc">Ana sayfada görünen kısa açıklama</label>
+        <textarea id="shortDesc" maxlength="200" required></textarea>
+      </div>
+
+      <div class="full-width">
+        <label for="longDesc">Normal açıklama</label>
+        <textarea id="longDesc"></textarea>
+      </div>
+
+      <div>
+        <label for="techs">Kullandığım teknolojiler (virgülle ayır)</label>
+        <input type="text" id="techs" placeholder="Python, React, PostgreSQL" />
+      </div>
+
+      <div>
+        <label for="links">Linkler (virgülle ayır)</label>
+        <input type="text" id="links" placeholder="GitHub, canlı demo vs." />
+      </div>
+
+      <div class="full-width">
+        <label for="learnings">Öğrendiklerim</label>
+        <textarea id="learnings"></textarea>
+      </div>
+
+      <div class="full-width">
+        <button type="submit">Projeyi Kaydet</button>
+      </div>
+    </form>
+
+    <div id="adminMessage" class="admin-message"></div>
+
+    <div class="admin-list">
+      <h3>Kaydedilmiş Projeler</h3>
+      <div id="savedProjects"></div>
+    </div>
+
+    <h2 style="margin-top:40px;">Takvim Etkinlikleri</h2>
+    <form id="adminEventForm" class="admin-event-form">
+      <div>
+        <label for="adminEventStart">Başlangıç Tarihi</label>
+        <input type="date" id="adminEventStart" required />
+      </div>
+      <div>
+        <label for="adminEventEnd">Bitiş Tarihi (opsiyonel)</label>
+        <input type="date" id="adminEventEnd" />
+      </div>
+      <div class="full-width">
+        <label for="adminEventTitle">Başlık</label>
+        <input type="text" id="adminEventTitle" placeholder="Örn: Final haftası, sınav günü..." required />
+      </div>
+      <div class="full-width">
+        <button type="submit">Etkinliği Kaydet</button>
+      </div>
+    </form>
+    <div id="adminEventMessage" class="admin-message"></div>
+
+    <div class="admin-list">
+      <h3>Kaydedilmiş Etkinlikler</h3>
+      <div id="savedEvents"></div>
+    </div>
+  </main>
+
+  <script>
+    function loadProjects() {
+      try {
+        const raw = localStorage.getItem('projects');
+        const projects = raw ? JSON.parse(raw) : [];
+        return Array.isArray(projects) ? projects : [];
+      } catch (e) {
+        console.error('Projeler okunamadı', e);
+        return [];
+      }
+    }
+
+    function saveProjects(projects) {
+      localStorage.setItem('projects', JSON.stringify(projects));
+    }
+
+    function renderSavedProjects() {
+      const container = document.getElementById('savedProjects');
+      const projects = loadProjects();
+      if (!projects.length) {
+        container.innerHTML = "<p>Henüz admin üzerinden eklenmiş proje yok.</p>";
+        return;
+      }
+      container.innerHTML = projects
+        .map(function (p, index) {
+          return (
+            '<div class="admin-list-item">' +
+            '<span>' +
+            (index + 1) +
+            '.</span> ' +
+            (p.title || 'Başlıksız') +
+            (p.shortDesc ? ' - ' + p.shortDesc : '') +
+            '</div>'
+          );
+        })
+        .join('');
+    }
+
+    document.getElementById('projectForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var title = document.getElementById('title').value.trim();
+      var imageUrl = document.getElementById('imageUrl').value.trim();
+      var shortDesc = document.getElementById('shortDesc').value.trim();
+      var longDesc = document.getElementById('longDesc').value.trim();
+      var techs = document.getElementById('techs').value.trim();
+      var links = document.getElementById('links').value.trim();
+      var learnings = document.getElementById('learnings').value.trim();
+
+      if (!title || !imageUrl || !shortDesc) {
+        document.getElementById('adminMessage').textContent = 'Başlık, görsel ve kısa açıklama zorunludur.';
+        return;
+      }
+
+      var projects = loadProjects();
+      var newProject = {
+        id: Date.now(),
+        title: title,
+        imageUrl: imageUrl,
+        shortDesc: shortDesc,
+        longDesc: longDesc,
+        techs: techs ? techs.split(',').map(function (t) { return t.trim(); }).filter(Boolean) : [],
+        links: links ? links.split(',').map(function (l) { return l.trim(); }).filter(Boolean) : [],
+        learnings: learnings
+      };
+
+      projects.push(newProject);
+      saveProjects(projects);
+
+      document.getElementById('projectForm').reset();
+      document.getElementById('adminMessage').textContent = 'Proje kaydedildi. Projeler sayfasını yenilediğinde görünecek.';
+      renderSavedProjects();
+    });
+
+    renderSavedProjects();
+
+    function normalizeEvent(e) {
+      // Eski kayıtlar {date, title} şeklindeydi; onları da aralığa çevir
+      if (e.startDate || e.endDate) {
+        return {
+          startDate: e.startDate || e.endDate,
+          endDate: e.endDate || e.startDate,
+          title: e.title
+        };
+      }
+      return {
+        startDate: e.date,
+        endDate: e.date,
+        title: e.title
+      };
+    }
+
+    function loadEvents() {
+      try {
+        const raw = localStorage.getItem('calendarEvents');
+        const events = raw ? JSON.parse(raw) : [];
+        if (!Array.isArray(events)) return [];
+        return events.map(normalizeEvent);
+      } catch (e) {
+        console.error('Etkinlikler okunamadı', e);
+        return [];
+      }
+    }
+
+    function saveEvents(events) {
+      localStorage.setItem('calendarEvents', JSON.stringify(events));
+    }
+
+    function renderSavedEvents() {
+      const container = document.getElementById('savedEvents');
+      const events = loadEvents().slice().sort(function (a, b) {
+        return a.startDate < b.startDate ? -1 : 1;
+      });
+      if (!events.length) {
+        container.innerHTML = "<p>Henüz eklenmiş etkinlik yok.</p>";
+        return;
+      }
+      container.innerHTML = events
+        .map(function (e, index) {
+          var start = new Date(e.startDate).toLocaleDateString('tr-TR');
+          var end = e.endDate ? new Date(e.endDate).toLocaleDateString('tr-TR') : null;
+          var dateLabel = start === end || !end ? start : (start + ' - ' + end);
+          return (
+            '<div class="admin-list-item">' +
+            '<span>' +
+            (index + 1) +
+            '.</span> ' +
+            dateLabel +
+            ' - ' +
+            e.title +
+            '</div>'
+          );
+        })
+        .join('');
+    }
+
+    document.getElementById('adminEventForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var start = document.getElementById('adminEventStart').value;
+      var end = document.getElementById('adminEventEnd').value;
+      var title = document.getElementById('adminEventTitle').value.trim();
+
+      if (!start || !title) {
+        document.getElementById('adminEventMessage').textContent = 'Başlangıç tarihi ve başlık zorunludur.';
+        return;
+      }
+
+      if (end && end < start) {
+        document.getElementById('adminEventMessage').textContent = 'Bitiş tarihi başlangıçtan önce olamaz.';
+        return;
+      }
+
+      var events = loadEvents();
+      events.push({
+        startDate: start,
+        endDate: end || start,
+        title: title
+      });
+      saveEvents(events);
+
+      document.getElementById('adminEventForm').reset();
+      document.getElementById('adminEventMessage').textContent = 'Etkinlik kaydedildi. Takvim sayfasını yenilediğinde görünecek.';
+      renderSavedEvents();
+    });
+
+    renderSavedEvents();
+  </script>
+</body>
+</html>
